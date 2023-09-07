@@ -1,7 +1,7 @@
 package models
 
 type TokenBalance struct {
-	TokenType       string `json:"tokenType,omitempty"`
+	TokenSymbol     string `json:"tokenSymbol,omitempty"`
 	ContractAddress string `json:"contractAddress,omitempty"`
 	Blockchain      string `json:"blockchain,omitempty"`
 	Balance         string `json:"balance,omitempty"`

@@ -13,6 +13,7 @@ type AnkrResponse[T any] struct {
 	Result  T      `json:"result"`
 }
 
+/* Params */
 type WalletParams struct {
 	NativeFist      bool   `json:"nativeFirst"`
 	OnlyWhiteListed bool   `json:"onlyWhiteListed"`
@@ -22,17 +23,33 @@ type WalletParams struct {
 	WalletAddress   string `json:"walletAddress,omitempty"`
 }
 
+type CurrenciesParams struct {
+	Blockchain string `json:"blockchain"`
+}
+
+type TokenPriceParams struct {
+	Blockchain      string `json:"blockchain"`
+	ContractAddress string `json:"contractAddress"`
+	SkipSyncCheck   bool   `json:"skipSyncCheck,omitempty"`
+}
+
+/* Response */
 type AnkrBalanceResponse struct {
 	TotalBalanceUsd string         `json:"totalBalanceUsd"`
 	Assets          []TokenBalance `json:"assets"`
 }
 
-type AnkrTokenBalance struct {
-	TokenBalance
-	BalanceRawInteger string `json:"balanceRawInteger"`
-	BalanceUsd        string `json:"balanceUsd"`
-	HolderAddress     string `json:"holderAddress"`
-	Thumbnail         string `json:"thumbnail"`
-	TokenDecimal      int    `json:"tokenDecimal"`
-	TokenSymbol       string `json:"tokenSumbol"`
+type AnkrCurrenciesResponse struct {
+	Currencies []Currency `json:"currencies"`
+}
+
+type Currency struct {
+	Address string `json:"address"`
+	Symbol  string `json:"symbol"`
+}
+
+type AnkrPriceResponse struct {
+	Blockchain      string `json:"blockchain"`
+	ContractAddress string `json:"contractAddress"`
+	UsdPrice        string `json:"usdPrice"`
 }
